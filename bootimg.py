@@ -462,7 +462,7 @@ def parse_cpio(cpio, directory, cpiolist):
 
         srwx = oct(S_IMODE(mode))
         if S_ISLNK(mode):
-            location = cpio.read(filesize)
+            location = cpio.read(filesize).decode('latin')
             cpio.read(padding(filesize))
             cpiolist.write('slink %s %s %s\n' % (name, location, srwx))
         elif S_ISDIR(mode):
